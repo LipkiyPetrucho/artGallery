@@ -1,0 +1,43 @@
+2024-11-22 23:14:27,810 - INFO - Исключён файл по расширению: art_gallery\.env.example
+2024-11-22 23:14:27,811 - INFO - Исключён файл по расширению: art_gallery\.gitignore
+2024-11-22 23:14:27,811 - INFO - Исключён файл: art_gallery\manage.py
+2024-11-22 23:14:27,811 - INFO - Исключён файл: art_gallery\artworks\admin.py
+2024-11-22 23:14:27,812 - INFO - Исключён файл: art_gallery\artworks\apps.py
+2024-11-22 23:14:27,844 - INFO - Исключён файл: art_gallery\artworks\tests.py
+2024-11-22 23:14:27,847 - INFO - Исключён файл: art_gallery\artworks\__init__.py
+2024-11-22 23:14:27,847 - INFO - Исключён файл: art_gallery\art_gallery\asgi.py
+2024-11-22 23:14:27,889 - INFO - Исключён файл: art_gallery\art_gallery\wsgi.py
+2024-11-22 23:14:27,889 - INFO - Исключён файл: art_gallery\art_gallery\__init__.py
+2024-11-22 23:14:27,890 - INFO - Исключён файл по расширению: art_gallery\media\paintings\369436-восстановлено.jpg
+2024-11-22 23:14:27,890 - INFO - Исключён файл по расширению: art_gallery\media\paintings\6f60ef58-b45d-4db4-862d-fdc0dbbc54c9.png
+2024-11-22 23:14:27,890 - INFO - Исключён файл по расширению: art_gallery\media\paintings\cats.png
+2024-11-22 23:14:27,891 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\369436-восстановлено.jpg.300x300_q80.jpg
+2024-11-22 23:14:27,891 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\369436-восстановлено.jpg.500x500_q100.jpg
+2024-11-22 23:14:27,891 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\369436-восстановлено.jpg.600x600_q100.jpg
+2024-11-22 23:14:27,891 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\369436-восстановлено.jpg.800x800_q100.jpg
+2024-11-22 23:14:27,892 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\6f60ef58-b45d-4db4-862d-fdc0dbbc54c9.png.300x300_q80.png
+2024-11-22 23:14:27,892 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\6f60ef58-b45d-4db4-862d-fdc0dbbc54c9.png.500x500_q100.png
+2024-11-22 23:14:27,892 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\6f60ef58-b45d-4db4-862d-fdc0dbbc54c9.png.600x600_q100.png
+2024-11-22 23:14:27,892 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\6f60ef58-b45d-4db4-862d-fdc0dbbc54c9.png.800x800_q100.png
+2024-11-22 23:14:27,893 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\cats.png.300x300_q100.jpg
+2024-11-22 23:14:27,893 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\cats.png.300x300_q80.jpg
+2024-11-22 23:14:27,893 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\cats.png.500x500_q100.jpg
+2024-11-22 23:14:27,893 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\cats.png.600x600_q100.jpg
+2024-11-22 23:14:27,893 - INFO - Исключён файл по расширению: art_gallery\media\thumbnails\paintings\cats.png.800x800_q100.jpg
+2024-11-22 23:14:27,901 - INFO - Включен файл: art_gallery\.env
+2024-11-22 23:14:27,902 - INFO - Включен файл: art_gallery\artworks\models.py
+2024-11-22 23:14:27,902 - INFO - Включен файл: art_gallery\artworks\urls.py
+2024-11-22 23:14:27,902 - INFO - Включен файл: art_gallery\artworks\forms.py
+2024-11-22 23:14:27,903 - INFO - Включен файл: art_gallery\artworks\views.py
+2024-11-22 23:14:27,903 - INFO - Включен файл: art_gallery\art_gallery\context_processors.py
+2024-11-22 23:14:27,903 - INFO - Включен файл: art_gallery\art_gallery\settings.py
+2024-11-22 23:14:27,904 - INFO - Включен файл: art_gallery\art_gallery\urls.py
+2024-11-22 23:14:27,904 - INFO - Включен файл: art_gallery\templates\base.html
+2024-11-22 23:14:27,905 - INFO - Включен файл: art_gallery\templates\artworks\about.html
+2024-11-22 23:14:27,905 - INFO - Включен файл: art_gallery\templates\artworks\blog.html
+2024-11-22 23:14:27,905 - INFO - Включен файл: art_gallery\templates\artworks\contacts.html
+2024-11-22 23:14:27,906 - INFO - Включен файл: art_gallery\templates\artworks\detail.html
+2024-11-22 23:14:27,906 - INFO - Включен файл: art_gallery\templates\artworks\free_works.html
+2024-11-22 23:14:27,906 - INFO - Включен файл: art_gallery\templates\artworks\gallery.html
+2024-11-22 23:14:27,907 - INFO - Включен файл: art_gallery\templates\artworks\home.html
+2024-11-22 23:14:27,908 - INFO - Код проекта записан в файл code.txt, структура папок добавлена.

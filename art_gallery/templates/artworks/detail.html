@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}Свободная работа{% endblock %}
+
+{% block content %}
+<section class="painting-detail">
+    <h1>свободные работы</h1>
+    <div class="painting-container">
+        <!-- Основное изображение -->
+        <div class="painting-main">
+            {% thumbnail painting.image "800x800" quality=100 as im %}
+                <a href="{{ painting.image.url }}">
+                    <img src="{{ im.url }}" alt="{{ painting.title }}">
+                </a>
+        </div>
+
+        <!-- Миниатюры других картин -->
+        <div class="painting-thumbnails">
+            {% for other in other_paintings %}
+                <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Описание картины -->
+    <div class="painting-description">
+        <h2>{{ painting.title }}</h2>
+        <p>{{ painting.description }}</p>
+        <p>{{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+    </div>
+</section>
+{% endblock %}

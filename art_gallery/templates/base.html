@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="сайт художника из города Самара">
+    <title>{% block title %}Главная{% endblock %}</title>
+    {% load static %}
+
+    <!-- Подключение шрифтов -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Подключение Font Awesome --> <!--TODO: нужно ли поменять в продакшене?-->
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="hero">
+        <h1>Марина Липатова</h1>
+        <p>живопись & графика</p>
+
+        <nav class="main-menu">
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'artworks:about' %}">Об авторе</a></li>
+                <li><a href="{% url 'artworks:gallery' %}">Галерея</a></li>
+                <li><a href="{% url 'artworks:blog' %}">Блог</a></li>
+                <li><a href="{% url 'artworks:contacts' %}">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Блок для сообщений -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <hr class="footer-separator">
+        <ul class="social-links">
+            <li>
+                <a href="https://vk.com/marina_lipatova_art" target="_blank" aria-label="VK">
+                    <i class="fab fa-vk"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/marina_lipa_art?igsh=aGcwMXp1N2R5Zmdnp" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/marina_lipatova_art" target="_blank" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </li>
+        </ul>
+        <p>© Marina Lipatova ART {{ current_year }}</p>
+    </footer>
+</body>
+</html>

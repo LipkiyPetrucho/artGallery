@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}Об авторе{% endblock %}
+
+{% block content %}
+<section class="about-author">
+    <div class="author-photo">
+        <img src="{% static 'img/author.png' %}" alt="Фото автора">
+    </div>
+    <div class="author-info">
+        <h1>Марина Липатова</h1>
+        <p>«Не делаю мир лучше, он и без меня прекрасен. Мой стиль работы — импрессионизм. Он близок мне: через него я раскрываюсь как эстет, как наблюдатель.</p>
+        <p>Впечатляюсь моментом и переношу его на холст, перемешивая с краской своё настроение, мысли и чуточку души.</p>
+        <p>Мои картины вписаны в интерьеры домов в разных частях земли, это греет и здорово вдохновляет на новые работы.</p>
+        <p>Хочется расти, учиться у лучших, бесконечно экспериментировать и заявлять о себе миру.</p>
+        <p>Гармоничные и спокойные темы и цвета — мой намеренный выбор. Они не будоражат сознание, наоборот, умиротворяют и дарят тёплую энергию пространства дома.</p>
+        <p>Самое приятное для меня — писать на заказ. Поймать настроение человека, стиль его образа, стиль жизни и пробовать воплощать. Обожаю дарить свои работы друзьям, к моему счастью, ни одна из них не пылится за шкафом.</p>
+        <p>Удивлять, иногда восхищать, вызывать радость своими работами — это моя любовь навсегда.»</p>
+    </div>
+</section>
+
+<section class="additional-info">
+    <div class="exhibitions">
+        <h2>Список выставок</h2>
+        <ul>
+            <li>2019</li>
+            <li>2022</li>
+            <li>2023</li>
+            <li>2024</li>
+        </ul>
+    </div>
+    <div class="videos">
+        <div class="video-item">
+            <video controls loading="lazy">
+                <source src="{{ MEDIA_URL }}videos/about_video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает тег video.
+            </video>
+            <p>выставка КОНТРАСТЫ</p>
+        </div>
+        <div class="video-item">
+            <div class="iframe-wrapper">
+                <iframe src="https://vk.com/video_ext.php?oid=-225142990&id=456239045&hd=2&autoplay=0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p>ТВОРЧЕСКИЙ СОЮЗ ХУДОЖНИКОВ РОССИИ</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

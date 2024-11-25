@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+    <header class="hero">
+        <h1>Контакты художника</h1>
+    </header>
+
+    <main class="contacts">
+        <!-- Социальные ссылки -->
+        <section class="social-media">
+            <div class="social-icons">
+                <a href="https://vk.com/marina_lipatova_art" target="_blank" aria-label="VK">
+                    <i class="fab fa-vk"></i>
+                </a>
+                <a href="https://www.instagram.com/marina_lipa_art?igsh=aGcwMXp1N2R5Zmdnp" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/marina_lipatova_art" target="_blank" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+
+            <a class="email-button" href="mailto:pafos.light@yandex.ru" target="_self">pafos.light@yandex.ru</a>
+
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="contact-form">
+            <p>или</p>
+            <form action="{% url 'artworks:contacts' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Отображение сообщений -->
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                
+                <!-- Поля формы -->
+                <div>
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="error">{{ form.name.errors }}</div>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">{{ form.email.errors }}</div>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.message.label_tag }}
+                    {{ form.message }}
+                    {% if form.message.errors %}
+                        <div class="error">{{ form.message.errors }}</div>
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.attachment.label_tag }}
+                    {{ form.attachment }}
+                    {% if form.attachment.errors %}
+                        <div class="error">{{ form.attachment.errors }}</div>
+                    {% endif %}
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

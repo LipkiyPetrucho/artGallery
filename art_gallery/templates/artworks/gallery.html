@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+
+{% block title %}Галерея{% endblock %}
+
+{% block content %}
+<section class="gallery">
+    <div class="carousel">
+        <button class="carousel-control prev">&lt;</button>
+        <div class="carousel-images">
+            {% for painting in paintings %}
+                <a href="{{ painting.image.url }}">
+                    {% thumbnail painting.image "600x600" quality=100 as im %}
+                    <img src="{{ im.url }}" alt="{{ painting.title }}" class="carousel-image {% if forloop.first %}active{% endif %}">
+                </a>
+            {% endfor %}
+        </div>
+        <button class="carousel-control next">&gt;</button>
+    </div>
+
+    <div class="cta">
+        <a href="{% url 'artworks:free_works' %}" class="cta-button">смотреть свободные работы</a>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const prevButton = document.querySelector('.carousel-control.prev');
+        const nextButton = document.querySelector('.carousel-control.next');
+        const images = document.querySelectorAll('.carousel-image');
+        let current = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            current = (current - 1 + images.length) % images.length;
+            showImage(current);
+        });
+
+        nextButton.addEventListener('click', () => {
+            current = (current + 1) % images.length;
+            showImage(current);
+        });
+
+        // Инициализация
+        showImage(current);
+    });
+</script>
+
+<style>
+    .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .carousel-images {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-image {
+        min-width: 100%;
+        display: none;
+    }
+
+    .carousel-image.active {
+        display: block;
+    }
+
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .carousel-control.prev {
+        left: 10px;
+    }
+
+    .carousel-control.next {
+        right: 10px;
+    }
+</style>
+{% endblock %}
