@@ -15,7 +15,7 @@ class ContactForm(forms.Form):
         },
     )
     message = forms.CharField(
-        widget=forms.Textarea(attrs={"placeholder": "Ваше сообщение", "rows": 5}),
+        widget=forms.Textarea(attrs={"placeholder": "Ваше сообщение", "rows": 2}),
         required=True,
     )
     attachment = forms.FileField(
@@ -26,7 +26,7 @@ class ContactForm(forms.Form):
         attachment = self.cleaned_data.get("attachment", False)
         if attachment:
             if attachment.size > 4 * 1024 * 1024:
-                raise forms.ValidationError("Размер файла не должен превышать 4MB.")
+                raise forms.ValidationError("Размер файла не должен превышать 20MB.")
             if not attachment.content_type in [
                 "image/jpeg",
                 "image/png",

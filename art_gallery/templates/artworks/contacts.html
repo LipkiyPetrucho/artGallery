@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-            <a class="email-button" href="mailto:pafos.light@yandex.ru" target="_self">pafos.light@yandex.ru</a>
+            <a class="email-button" href="mailto:pafos.light@yandex.ru" target="_self">отправить электронное письмо</a>
 
         </section>
 
@@ -46,34 +46,37 @@
                 
                 <!-- Поля формы -->
                 <div>
-                    {{ form.name.label_tag }}
+<!--                    {{ form.name.label_tag }}-->
                     {{ form.name }}
                     {% if form.name.errors %}
                         <div class="error">{{ form.name.errors }}</div>
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.email.label_tag }}
+<!--                    {{ form.email.label_tag }}-->
                     {{ form.email }}
                     {% if form.email.errors %}
                         <div class="error">{{ form.email.errors }}</div>
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.message.label_tag }}
+<!--                    {{ form.message.label_tag }}-->
                     {{ form.message }}
                     {% if form.message.errors %}
                         <div class="error">{{ form.message.errors }}</div>
                     {% endif %}
                 </div>
                 <div>
-                    {{ form.attachment.label_tag }}
-                    {{ form.attachment }}
+<!--                    {{ form.attachment.label_tag }}-->
+                    <label for="id_attachment" class="file-input-label">
+                        <i class="fas fa-paperclip"></i> Прикрепите файл
+                        <input type="file" name="attachment" id="id_attachment" class="file-input" />
+                    </label>
                     {% if form.attachment.errors %}
                         <div class="error">{{ form.attachment.errors }}</div>
                     {% endif %}
                 </div>
-                <button type="submit">Отправить</button>
+                <button type="submit">отправить</button>
             </form>
         </section>
     </main>

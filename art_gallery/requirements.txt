@@ -1,6 +1,6 @@
 asgiref==3.8.1
 Django==5.1.3
-easy-thumbnails==2.10
+easy-thumbnails
 gunicorn
 pillow==11.0.0
 psycopg2-binary==2.9.10

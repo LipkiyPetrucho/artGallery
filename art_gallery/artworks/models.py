@@ -8,17 +8,21 @@ class Painting(models.Model):
     #     ('sold', 'Sold'),
     #     ('reserved', 'Reserved'),]
     # TODO: author = models.CharField(max_length=100, blank=True, null=True)
-    title = models.CharField(max_length=200)
-    created_at = models.DateField()
-    upload_date = models.DateTimeField(auto_now_add=True)
-    material = models.CharField(max_length=100)
-    dimensions = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="paintings/")  # TODO:   /%Y/%m/%d/
-    description = models.TextField(blank=True)
-    category = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField("Название", max_length=200)
+    created_at = models.DateField("Дата создания")
+    upload_date = models.DateTimeField("Дата загрузки", auto_now_add=True)
+    material = models.CharField("Материал", max_length=100)
+    dimensions = models.CharField("Размеры", max_length=50)
+    image = models.ImageField("Изображение", upload_to="paintings/")  # TODO:   /%Y/%m/%d/
+    description = models.TextField("Описание", blank=True)
+    category = models.CharField("Категория", max_length=100, blank=True, null=True)
     # TODO: tags = models.CharField(max_length=200, blank=True)
     # TODO: price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     # TODO: status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='available')
+
+    class Meta:
+        verbose_name = 'Картина'
+        verbose_name_plural = 'Картины'
 
     def __str__(self):
         return self.title

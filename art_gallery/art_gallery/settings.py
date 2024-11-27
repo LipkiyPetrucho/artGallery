@@ -104,6 +104,11 @@ THUMBNAIL_ALIASES = {
             "size": (300, 300),
             "crop": True,
         },
+        'gallery': {
+            'size': (300, 300),
+            'crop': True,  # Обрезка до размера
+            'upscale': True,  # Увеличение при необходимости
+        },
     },
 }
 
@@ -130,3 +135,28 @@ ADMINS = [
 
 # Email художника для получения сообщений
 ARTIST_EMAIL = os.getenv("ARTIST_EMAIL")
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # Важно сохранить существующие логгеры
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),  # Лог-файл
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'artworks': {  # Ваше приложение
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+

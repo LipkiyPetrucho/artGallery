@@ -6,11 +6,13 @@
 
 {% block content %}
 <section class="painting-detail">
-    <h1>свободные работы</h1>
+    <div>
+        <a href="{% url 'artworks:free_works' %}">< свободные работы</a>
+    </div>
     <div class="painting-container">
         <!-- Основное изображение -->
         <div class="painting-main">
-            {% thumbnail painting.image "800x800" quality=100 as im %}
+            {% thumbnail painting.image "1200x1200" quality=100 as im %}
                 <a href="{{ painting.image.url }}">
                     <img src="{{ im.url }}" alt="{{ painting.title }}">
                 </a>
@@ -19,7 +21,10 @@
         <!-- Миниатюры других картин -->
         <div class="painting-thumbnails">
             {% for other in other_paintings %}
-                <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">
+                    <a href="{{ other.get_absolute_url }}">
+                        {% thumbnail other.image "gallery" as im %}
+                            <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">
+                    </a>
             {% endfor %}
         </div>
     </div>

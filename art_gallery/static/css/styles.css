@@ -318,9 +318,15 @@ footer ul.social-links a:hover {
 }
 
 .social-icons a {
-    margin: 0 10px;
+    margin: 0 30px;
     display: inline-block;
     font-size: 60px; /* Размер иконок */
+    color: #333;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #007bff;
 }
 
 .social-icons img {
@@ -335,20 +341,27 @@ footer ul.social-links a:hover {
     padding: 10px 20px;
     background-color: #3d5063;
     color: #ffffff;
-    border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
+    box-sizing: border-box;
+    border: 2px solid #3d5063; /* серая рамка */
 }
 
 .email-button:hover {
-    background-color: #0056b3;
+    background-color: #d3d3d3;
+    border: 2px solid #3d5063; /* серая рамка */
+    color: #000000;
 }
 
 /* Форма обратной связи */
 .contact-form {
     margin-top: 20px;
+    max-width: 300px; /* Устанавливаем максимальную ширину для формы */
+    margin-left: auto; /* Центрируем форму */
+    margin-right: auto; /* Центрируем форму */
 }
 
 .contact-form p {
@@ -373,18 +386,23 @@ footer ul.social-links a:hover {
 }
 
 .contact-form button {
+    width: 100%; /* Доступная ширина кнопки будет равной ширине формы */
     padding: 10px;
     background-color: #3d5063;
     color: #ffffff;
-    border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
+    box-sizing: border-box;
+    border: 2px solid #3d5063; /* серая рамка */
 }
 
 .contact-form button:hover {
-    background-color: #0056b3;
+    background-color: #d3d3d3;
+    border: 2px solid #3d5063; /* серая рамка */
+    color: #000000;
 }
 
 /* Стиль для кнопки загрузки файла */
@@ -399,6 +417,32 @@ footer ul.social-links a:hover {
     display: none;
 }
 
+.file-input {
+    display: none; /* Скрываем стандартное поле ввода */
+}
+
+.file-input-label {
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание иконки и текста */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    padding: 10px;
+    /*border: 1px solid #ddd;*/
+    border-radius: 5px;
+    background-color: #fff; /* Фоновый цвет */
+    font-size: 16px;
+    color: #333; /* Цвет текста */
+    transition: border-color 0.3s;
+}
+
+.file-input-label:hover {
+    border-color: #3d5063; /* Изменяем цвет рамки при наведении */
+}
+
+/* Стиль для иконки */
+.file-input-label i {
+    margin-right: 20px; /* Отступ между иконкой и текстом */
+}
+
 /* Галерея */
 .gallery {
     max-width: 1200px;
@@ -411,54 +455,96 @@ footer ul.social-links a:hover {
 }
 
 .carousel {
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-        overflow: hidden;
-}
-
-.carousel-images {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    justify-content: center; /* Центрировать дочерние элементы */
-}
-
-.carousel-image {
-    min-width: 100%;
-    display: none;
-}
-
-.carousel-image.active {
-    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
 }
 
 .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
 }
 
-.carousel-control.prev {
-    left: 10px;
+.carousel-control:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-.carousel-control.next {
-    right: 10px;
+.carousel-images {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Пять колонок */
+    grid-template-rows: repeat(2, 1fr); /* Два ряда */
+    gap: 15px; /* Расстояние между элементами */
+    max-width: 1000px; /* Максимальная ширина галереи */
+    margin: 0 auto; /* Центрирование галереи */
 }
 
-.carousel-control:hover {
-    background-color: #007bff;
-    color: #ffffff;
+.carousel-item {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Создание квадратного контейнера */
+    position: relative;
+}
+
+.carousel-item a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполнение контейнера с обрезкой */
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.carousel-image:hover {
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+.step-links a.pagination-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.step-links a.pagination-button:hover {
+    background: #555;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination-button:hover {
+    background: #555;
 }
 
 .cta {
-    margin: 20px 0;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .cta-button {
@@ -466,15 +552,46 @@ footer ul.social-links a:hover {
     padding: 10px 20px;
     background-color: #3d5063;
     color: #ffffff;
-    border: none;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
+    box-sizing: border-box;
+    border: 2px solid #3d5063; /* серая рамка */
 }
 
 .cta-button:hover {
-    background-color: #0056b3;
+    background-color: #d3d3d3;
+    border: 2px solid #3d5063; /* серая рамка */
+    color: #000000;
+}
+
+@media (max-width: 1200px) {
+    .carousel-images {
+        grid-template-columns: repeat(4, 1fr); /* Четыре колонки */
+    }
+}
+
+@media (max-width: 900px) {
+    .carousel-images {
+        grid-template-columns: repeat(3, 1fr); /* Три колонки */
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-images {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки */
+    }
+
+    .carousel-control {
+        font-size: 18px; /* Уменьшение размера шрифта для управления каруселью на маленьких экранах */
+        padding: 8px 16px;
+    }
+
+    .cta-button {
+        font-size: 12px; /* Уменьшение размера шрифта для кнопки CTA на маленьких экранах */
+    }
 }
 
 /* Свободные работы */
@@ -500,12 +617,12 @@ footer ul.social-links a:hover {
 }
 
 .work-card {
-    background-color: #ffffff;
+    /*background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
     padding: 10px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 
@@ -533,18 +650,24 @@ footer ul.social-links a:hover {
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left; /* Изменено на left для лучшего выравнивания текста */
 }
 
 .painting-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Изменено с space-between на flex-start */
     align-items: flex-start;
     margin-top: 20px;
 }
 
+.painting-main {
+    flex: 0 0 70%; /* Занимает 70% ширины контейнера */
+    max-width: 800px; /* Максимальная ширина основной картины */
+}
+
 .painting-main img {
-    max-width: 70%;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -553,13 +676,15 @@ footer ul.social-links a:hover {
 .painting-thumbnails {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-left: 20px;
+    gap: 15px; /* Увеличен отступ между миниатюрами */
+    margin-left: 30px; /* Увеличен отступ между основной картиной и миниатюрами */
+    flex: 0 0 150px; /* Фиксированная ширина для миниатюр */
 }
 
 .thumbnail {
     width: 100px;
     height: auto;
+    object-fit: cover; /* Заполнение контейнера с обрезкой */
     border-radius: 5px;
     border: 1px solid #ddd;
     cursor: pointer;
@@ -567,7 +692,7 @@ footer ul.social-links a:hover {
 }
 
 .thumbnail:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .painting-description {
@@ -584,6 +709,35 @@ footer ul.social-links a:hover {
     font-size: 16px;
     color: #555;
     margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .painting-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .painting-main {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .painting-thumbnails {
+        flex: 0 0 100%;
+        margin-left: 0;
+        margin-top: 20px;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .painting-thumbnails a {
+        margin: 0 10px;
+    }
+
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 /* сообщения об ошибках */

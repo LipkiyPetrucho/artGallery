@@ -14,7 +14,7 @@
         {% for painting in paintings %}
         <div class="work-card">
             <a href="{% url 'artworks:detail' painting.id %}">
-                {% thumbnail painting.image "300x300" quality=80 as im %}
+                {% thumbnail painting.image "gallery" as im %}
                     <img src="{{ im.url }}" alt="{{ painting.title }}" class="work-image">
 
             </a>

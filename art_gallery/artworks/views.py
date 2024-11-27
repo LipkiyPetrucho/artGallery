@@ -1,12 +1,16 @@
+import logging
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Painting
 from .forms import ContactForm
 
+logger = logging.getLogger(__name__)
 
 def home_view(request):
     return render(request, "artworks/home.html")
@@ -17,8 +21,17 @@ def about_view(request):
 
 
 def gallery_view(request):
-    paintings = Painting.objects.all()
-    return render(request, "artworks/gallery.html", {"paintings": paintings})
+    paintings = Painting.objects.all().order_by('id')
+    paginator = Paginator(paintings, 10)
+    page_number = request.GET.get('page', 1)
+
+    logger.debug(f'Received page number: {page_number}')
+
+    page_obj = paginator.get_page(page_number)
+
+    logger.debug(f'Current page: {page_obj.number}, Total pages: {paginator.num_pages}')
+
+    return render(request, "artworks/gallery.html", {"page_obj": page_obj, "paginator": paginator})
 
 
 def blog_view(request):
@@ -72,5 +85,8 @@ def free_works(request):
 
 def painting_detail(request, id):
     painting = get_object_or_404(Painting, id=id)
-    other_paintings = Painting.objects.exclude(id=id)[:10]
-    return render(request, "artworks/detail.html", {"painting": painting, 'other_paintings': other_paintings})
+    # Получаем три случайные другие картины, исключая текущую
+    other_paintings = Painting.objects.exclude(id=painting.id).order_by('?')[:3]
+    return render(request, "artworks/detail.html", {"painting": painting,
+                                                    'other_paintings': other_paintings
+                                                    })
