@@ -11,7 +11,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 INSTALLED_APPS = [
-    'grappelli',
+    "grappelli",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     # apps
     "artworks.apps.ArtworksConfig",
+    "blog.apps.BlogConfig",
     # libs
     "easy_thumbnails",
 ]
@@ -90,7 +91,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "static" # TODO: поменять перед запуском в продакшене
+STATIC_ROOT = BASE_DIR / "static"  # TODO: поменять перед запуском в продакшене
 # STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "/media/"
@@ -104,10 +105,26 @@ THUMBNAIL_ALIASES = {
             "size": (300, 300),
             "crop": True,
         },
-        'gallery': {
-            'size': (300, 300),
-            'crop': True,  # Обрезка до размера
-            'upscale': True,  # Увеличение при необходимости
+        "gallery": {
+            "size": (300, 300),
+            "crop": True,  # Обрезка до размера
+            "upscale": True,  # Увеличение при необходимости
+        },
+        "blog_thumbnail": {
+            "size": (300, 200),
+            "crop": True,
+            "upscale": True,
+        },
+        "blog_main": {
+            "size": (100, 100),
+            "crop": True,
+            "upscale": True,
+        },
+        "lightbox": {
+            "size": (1200, 1200),  # Размер для модального окна
+            "crop": False,  # Сохранение пропорций
+            "upscale": True,  # Увеличение при необходимости
+            "quality": 90,  # Качество изображения
         },
     },
 }
@@ -137,26 +154,25 @@ ADMINS = [
 ARTIST_EMAIL = os.getenv("ARTIST_EMAIL")
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,  # Важно сохранить существующие логгеры
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'debug.log'),  # Лог-файл
+    "version": 1,
+    "disable_existing_loggers": False,  # Важно сохранить существующие логгеры
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "debug.log"),  # Лог-файл
         },
     },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
         },
-        'artworks': {  # Ваше приложение
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
+        "artworks": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
         },
     },
 }
-

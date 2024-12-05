@@ -8,7 +8,6 @@
     {% load static %}
 
     <!-- Подключение шрифтов -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -19,7 +18,7 @@
 </head>
 <body>
     <header class="hero">
-        <h1>Марина Липатова</h1>
+        <h1>МАРИНА ЛИПАТОВА</h1>
         <p>живопись & графика</p>
 
         <nav class="main-menu">
@@ -27,7 +26,7 @@
                 <li><a href="{% url 'home' %}">Главная</a></li>
                 <li><a href="{% url 'artworks:about' %}">Об авторе</a></li>
                 <li><a href="{% url 'artworks:gallery' %}">Галерея</a></li>
-                <li><a href="{% url 'artworks:blog' %}">Блог</a></li>
+                <li><a href="{% url 'blog:post_list' %}">Блог</a></li>
                 <li><a href="{% url 'artworks:contacts' %}">Контакты</a></li>
             </ul>
         </nav>
@@ -72,5 +71,21 @@
         </ul>
         <p>© Marina Lipatova ART {{ current_year }}</p>
     </footer>
+
+
+    <!-- Модальное окно -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-image">
+        <div class="lightbox-navigation">
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+<!-- Подключение JavaScript -->
+    <script src="{% static 'js/lightbox.js' %}"></script>
+
 </body>
 </html>

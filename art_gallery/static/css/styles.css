@@ -1,6 +1,6 @@
 /* Общий стиль для страницы */
 h1, h2 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Playfair Display", serif;
 }
 
 
@@ -20,9 +20,9 @@ header.hero {
 header.hero h1 {
     font-size: 36px;
     font-weight: normal;
-
+    color: #666;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
 }
 
@@ -71,7 +71,7 @@ nav.main-menu a {
 }
 
 nav.main-menu a:hover {
-    color: #007bff;
+    color: #af6877;
 }
 
 .featured-image {
@@ -326,7 +326,7 @@ footer ul.social-links a:hover {
 }
 
 .social-icons a:hover {
-    color: #007bff;
+    color: #af6877;
 }
 
 .social-icons img {
@@ -426,8 +426,8 @@ footer ul.social-links a:hover {
     align-items: center; /* Вертикальное выравнивание иконки и текста */
     cursor: pointer; /* Изменяем курсор при наведении */
     padding: 10px;
-    /*border: 1px solid #ddd;*/
-    border-radius: 5px;
+    /*border: 1px solid #ddd;
+    border-radius: 5px;*/
     background-color: #fff; /* Фоновый цвет */
     font-size: 16px;
     color: #333; /* Цвет текста */
@@ -441,6 +441,7 @@ footer ul.social-links a:hover {
 /* Стиль для иконки */
 .file-input-label i {
     margin-right: 20px; /* Отступ между иконкой и текстом */
+    font-size: 1.3em; /* Увеличиваем размер иконки на 20% */
 }
 
 /* Галерея */
@@ -567,6 +568,99 @@ footer ul.social-links a:hover {
     color: #000000;
 }
 
+/* Стили для модального окна */
+.lightbox-modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 1000; /* Поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Избегаем прокрутки */
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Изображение внутри модального окна */
+.lightbox-content {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    object-fit: contain; /* Сохраняем пропорции */
+}
+
+/* Кнопка закрытия */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+/* Навигационные стрелки */
+.lightbox-navigation .prev,
+.lightbox-navigation .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 40px;
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.lightbox-navigation .prev {
+    left: 20px;
+}
+
+.lightbox-navigation .next {
+    right: 20px;
+}
+
+.lightbox-navigation .prev:hover,
+.lightbox-navigation .next:hover {
+    color: #bbb;
+}
+
+/* Нумерация */
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+/* Размытие фона при открытом модальном окне */
+.container.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s;
+}
+
+/* Адаптивность */
 @media (max-width: 1200px) {
     .carousel-images {
         grid-template-columns: repeat(4, 1fr); /* Четыре колонки */
@@ -590,7 +684,55 @@ footer ul.social-links a:hover {
     }
 
     .cta-button {
-        font-size: 12px; /* Уменьшение размера шрифта для кнопки CTA на маленьких экранах */
+        font-size: 8px; /* Уменьшение размера шрифта для кнопки CTA на маленьких экранах */
+    }
+}
+
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 90%;
+        max-height: 70%;
+    }
+
+    .close {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+
+    .lightbox-navigation .prev,
+    .lightbox-navigation .next {
+        font-size: 30px;
+        padding: 12px;
+    }
+
+    .lightbox-caption {
+        font-size: 16px;
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 60%;
+    }
+
+    .close {
+        font-size: 24px;
+        top: 5px;
+        right: 10px;
+    }
+
+    .lightbox-navigation .prev,
+    .lightbox-navigation .next {
+        font-size: 24px;
+        padding: 8px;
+    }
+
+    .lightbox-caption {
+        font-size: 14px;
+        bottom: 15px;
     }
 }
 
@@ -655,14 +797,14 @@ footer ul.social-links a:hover {
 
 .painting-container {
     display: flex;
-    justify-content: flex-start; /* Изменено с space-between на flex-start */
-    align-items: flex-start;
-    margin-top: 20px;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    align-items: center;    /* Центрируем элементы по горизонтали */
+    margin-top: 30px;
 }
 
 .painting-main {
-    flex: 0 0 70%; /* Занимает 70% ширины контейнера */
     max-width: 800px; /* Максимальная ширина основной картины */
+    width: 100%;      /* Обеспечиваем адаптивность */
 }
 
 .painting-main img {
@@ -696,13 +838,15 @@ footer ul.social-links a:hover {
 }
 
 .painting-description {
-    margin-top: 20px;
-    text-align: left;
+    margin-top: 30px;      /* Отступ сверху для описания */
+    text-align: center;    /* Центрируем текст описания (можно изменить на left) */
+    padding: 0 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
 }
 
 .painting-description h2 {
     font-size: 24px;
     color: #333;
+    margin-bottom: 10px; /* Дополнительный отступ под заголовком */
 }
 
 .painting-description p {
@@ -711,6 +855,7 @@ footer ul.social-links a:hover {
     margin: 5px 0;
 }
 
+/* Адаптивные стили для мобильных устройств */
 @media (max-width: 768px) {
     .painting-container {
         flex-direction: column;
@@ -740,6 +885,18 @@ footer ul.social-links a:hover {
     }
 }
 
+@media (max-width: 768px) {
+    .painting-description {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painting-description {
+        padding: 0 5px;
+    }
+}
+
 /* сообщения об ошибках */
 .error {
     color: red; /* Цвет текста ошибки */
@@ -747,5 +904,144 @@ footer ul.social-links a:hover {
     padding: 10px; /* Отступы для улучшения внешнего вида */
     border: 1px solid red; /* Красная рамка для сообщения об ошибке */
     border-radius: 5px; /* Закругленные углы */
+}
+
+/* art_gallery/static/css/styles.css */
+
+/* Общие стили для блога */
+.blog-list {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.blog-list .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.blog-list .post-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    transition: box-shadow 0.3s;
+}
+
+.blog-list .post-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blog-list .post-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-list .post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.blog-list .post-meta {
+    font-size: 14px;
+    color: #777;
+}
+
+.post-detail {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.post-detail .post-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.post-detail .post-meta {
+    font-size: 14px;
+    color: #777;
+}
+
+.post-detail .post-content {
+    text-align: left;
+}
+
+.post-detail .post-image {
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.post-detail .post-video {
+    margin-bottom: 20px;
+}
+
+.post-detail .post-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.post-detail .post-text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.other-posts {
+    margin-top: 40px;
+}
+
+.other-posts h3 {
+    margin-bottom: 20px;
+}
+
+.other-posts .thumbnails {
+    display: flex;
+    gap: 20px;
+}
+
+.other-posts .thumbnail-item {
+    width: 150px;
+}
+
+.other-posts .thumbnail-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.other-posts .thumbnail-item p {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.step-links a.pagination-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.step-links a.pagination-button:hover {
+    background: #555;
+}
+
+.step-links .current {
+    margin: 0 10px;
+    font-weight: bold;
 }
 

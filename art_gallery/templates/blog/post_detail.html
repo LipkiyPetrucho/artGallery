@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<section class="post-detail">
+    <div class="post-header">
+        <h1>{{ post.title }}</h1>
+        <p class="post-meta">Опубликовано {{ post.created|date:"d M Y" }} автором {{ post.author }}</p>
+    </div>
+
+    <div class="post-content">
+        {% if post.image %}
+            {% thumbnail post.image "gallery" as im %}
+                <img src="{{ im.url }}" alt="{{ post.title }}" class="post-image" loading="lazy">
+        {% endif %}
+
+        {% if post.video %}
+            <div class="post-video">
+                <video controls>
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+        {% endif %}
+
+        <div class="post-text">
+            {{ post.content|linebreaks }}
+        </div>
+    </div>
+
+    <!-- Миниатюры других постов -->
+    <div class="other-posts">
+        <h3>Другие посты</h3>
+        <div class="thumbnails">
+            {% for other in other_posts %}
+                <div class="thumbnail-item">
+                    <a href="{{ other.get_absolute_url }}">
+                        {% if other.image %}
+                            {% thumbnail other.image "gallery" as im %}
+                                <img src="{{ im.url }}" alt="{{ other.title }}" class="thumbnail-image" loading="lazy">
+                        {% endif %}
+                        <p>{{ other.title }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

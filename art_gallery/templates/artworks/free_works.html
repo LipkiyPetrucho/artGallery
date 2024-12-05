@@ -20,6 +20,7 @@
             </a>
             <div class="work-info">
                 <p>{{ painting.title }}, {{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+                <p>Статус: {{ painting.get_status_display }}</p>
             </div>
         </div>
         {% endfor %}

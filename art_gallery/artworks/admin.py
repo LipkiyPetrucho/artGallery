@@ -12,11 +12,14 @@ class PaintingAdmin(admin.ModelAdmin):
         "dimensions",
         "image",
         "description",
+        "status",
     ]
-    list_filter = ["upload_date"]
+    list_filter = ["upload_date", "status"]
     search_fields = (
         "title",
         "description",
         "material",
         "category",
     )
+    list_editable = ('status',)
+    ordering = ('-upload_date',)

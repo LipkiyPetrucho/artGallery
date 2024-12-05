@@ -1,5 +1,3 @@
-<!-- art_gallery/templates/artworks/gallery.html -->
-
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
@@ -12,9 +10,10 @@
         {% if page_obj.object_list %}
             {% for painting in page_obj.object_list %}
                 <div class="carousel-item">
-                    <a href="{{ painting.image.url }}">
-                        {% thumbnail painting.image "gallery" as im %}
-                            <img src="{{ im.url }}" alt="{{ painting.title }}" class="carousel-image" loading="lazy">
+                    {% thumbnail painting.image 'lightbox' as im_lightbox %}
+                    {% thumbnail painting.image 'gallery' as im %}
+                    <a href="#" class="gallery-image" data-index="{{ forloop.counter0 }}" data-full="{{ painting.image|thumbnail_url:'lightbox' }}">
+                        <img src="{{ painting.image|thumbnail_url:'gallery' }}" alt="{{ painting.title }}" class="carousel-image" loading="lazy">
                     </a>
                 </div>
             {% endfor %}

@@ -12,6 +12,7 @@ from .forms import ContactForm
 
 logger = logging.getLogger(__name__)
 
+
 def home_view(request):
     return render(request, "artworks/home.html")
 
@@ -21,17 +22,19 @@ def about_view(request):
 
 
 def gallery_view(request):
-    paintings = Painting.objects.all().order_by('id')
+    paintings = Painting.objects.all().order_by("id")
     paginator = Paginator(paintings, 10)
-    page_number = request.GET.get('page', 1)
+    page_number = request.GET.get("page", 1)
 
-    logger.debug(f'Received page number: {page_number}')
+    logger.debug(f"Received page number: {page_number}")
 
     page_obj = paginator.get_page(page_number)
 
-    logger.debug(f'Current page: {page_obj.number}, Total pages: {paginator.num_pages}')
+    logger.debug(f"Current page: {page_obj.number}, Total pages: {paginator.num_pages}")
 
-    return render(request, "artworks/gallery.html", {"page_obj": page_obj, "paginator": paginator})
+    return render(
+        request, "artworks/gallery.html", {"page_obj": page_obj, "paginator": paginator}
+    )
 
 
 def blog_view(request):
@@ -79,14 +82,16 @@ def contacts_view(request):
 
 
 def free_works(request):
-    paintings = Painting.objects.all()
+    paintings = Painting.objects.filter(status=Painting.Status.AVAILABLE)
     return render(request, "artworks/free_works.html", {"paintings": paintings})
 
 
 def painting_detail(request, id):
     painting = get_object_or_404(Painting, id=id)
     # Получаем три случайные другие картины, исключая текущую
-    other_paintings = Painting.objects.exclude(id=painting.id).order_by('?')[:3]
-    return render(request, "artworks/detail.html", {"painting": painting,
-                                                    'other_paintings': other_paintings
-                                                    })
+    other_paintings = Painting.objects.exclude(id=painting.id).order_by("?")[:3]
+    return render(
+        request,
+        "artworks/detail.html",
+        {"painting": painting, "other_paintings": other_paintings},
+    )

@@ -6,10 +6,11 @@ from django.urls import path, include
 from artworks.views import home_view
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
+    path("grappelli/", include("grappelli.urls")),
     path("admin/", admin.site.urls),
     path("", home_view, name="home"),
     path("artworks/", include("artworks.urls")),
+    path("blog/", include("blog.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
