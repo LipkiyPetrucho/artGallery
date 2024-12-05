@@ -12,9 +12,9 @@ def post_list(request):
     post_list = Post.published.all()
     paginator = Paginator(post_list, 3)  # 5 постов на страницу
     page_number = request.GET.get("page", 1)
-    posts = paginator.page(page_number)
+    page_obj = paginator.page(page_number)
 
-    return render(request, "blog/post_list.html", {"posts": posts})
+    return render(request, "blog/post_list.html", {"page_obj": page_obj})
 
 
 def post_detail(request, year, month, day, post):
