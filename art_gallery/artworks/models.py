@@ -4,9 +4,10 @@ from django.urls import reverse
 
 class Painting(models.Model):
     class Status(models.TextChoices):
-        AVAILABLE = 'available', 'Доступно'
-        SOLD = 'sold', 'Продано'
-        RESERVED = 'reserved', 'Зарезервировано'
+        AVAILABLE = "available", "Доступно"
+        SOLD = "sold", "Продано"
+        RESERVED = "reserved", "Зарезервировано"
+
     # TODO: author = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField("Название", max_length=200)
     created_at = models.DateField("Дата создания")

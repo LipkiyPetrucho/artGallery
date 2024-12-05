@@ -21,5 +21,5 @@ class PaintingAdmin(admin.ModelAdmin):
         "material",
         "category",
     )
-    list_editable = ('status',)
-    ordering = ('-upload_date',)
+    list_editable = ("status",)
+    ordering = ("-upload_date",)

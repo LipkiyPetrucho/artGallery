@@ -27,9 +27,7 @@ def post_detail(request, year, month, day, post):
         publish__day=day,
     )
     # Получаем другие посты для отображения миниатюр
-    other_posts = (
-        Post.published.all()[:3]
-    )
+    other_posts = Post.published.all()[:3]
     return render(
         request, "blog/post_detail.html", {"post": post, "other_posts": other_posts}
     )

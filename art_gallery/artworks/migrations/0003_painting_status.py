@@ -4,15 +4,23 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('artworks', '0002_alter_painting_options_alter_painting_category_and_more'),
+        ("artworks", "0002_alter_painting_options_alter_painting_category_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='painting',
-            name='status',
-            field=models.CharField(choices=[('available', 'Доступно'), ('sold', 'Продано'), ('reserved', 'Зарезервировано')], default='available', max_length=10, verbose_name='Статус'),
+            model_name="painting",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("available", "Доступно"),
+                    ("sold", "Продано"),
+                    ("reserved", "Зарезервировано"),
+                ],
+                default="available",
+                max_length=10,
+                verbose_name="Статус",
+            ),
         ),
     ]
