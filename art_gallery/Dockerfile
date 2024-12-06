@@ -1,5 +1,8 @@
 FROM python:3.12.4-slim
 
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
 # Устанавливаем зависимости системы
@@ -17,6 +20,14 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN python manage.py collectstatic --noinput
+
+## Установка WhiteNoise для обслуживания статических файлов в продакшн
+#RUN pip install whitenoise
+#
+## Обновление настроек WSGI для WhiteNoise
+#RUN sed -i "/application = get_wsgi_application()/a \
+#from whitenoise import WhiteNoise\n\
+#application = WhiteNoise(application, root='/app/static')" art_gallery/wsgi.py
 
 EXPOSE 8000
 

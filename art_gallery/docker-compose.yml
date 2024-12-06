@@ -13,11 +13,11 @@ services:
 
   web:
     build: .
-#    command: gunicorn art_gallery.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
     env_file:
       - .env
+    command: gunicorn art_gallery.wsgi:application --bind 0.0.0.0:8000
     depends_on:
       - db
     networks:

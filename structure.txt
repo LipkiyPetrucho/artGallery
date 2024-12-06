@@ -1,10 +1,14 @@
 # Структура папок проекта
 art_gallery/
     art_gallery/
+        settings/
+            __init__.py
+            base.py
+            local.py
+            prod.py
         __init__.py
         asgi.py
         context_processors.py
-        settings.py
         urls.py
         wsgi.py
     artworks/
@@ -16,14 +20,36 @@ art_gallery/
         models.py
         urls.py
         views.py
+    blog/
+        migrations/
+            __init__.py
+        __init__.py
+        admin.py
+        apps.py
+        models.py
+        urls.py
+        views.py
     media/
+        blog/
+            images/
+            videos/
         images/
         paintings/
         thumbnails/
+        videos/
+    nginx/
+        nginx.conf
     static/
+        admin/
+            css/
+            img/
+            js/
         css/
             styles.css
+        grappelli/
         img/
+        js/
+            lightbox.js
     templates/
         artworks/
             about.html
@@ -33,7 +59,20 @@ art_gallery/
             free_works.html
             gallery.html
             home.html
+        blog/
+            post_detail.html
+            post_list.html
+        pagination/
+            pagination.html
         base.html
+    .dockerignore
     .env
+    .env.example
     .gitignore
+    .dockerignore
+    docker-compose.override.yml
+    docker-compose.yml
+    Dockerfile
     manage.py
+    requirements.txt
+    wait-for-it.sh
