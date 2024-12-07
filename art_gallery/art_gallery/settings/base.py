@@ -91,14 +91,14 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "static"  # TODO: поменять перед запуском в продакшене
+STATIC_ROOT = BASE_DIR / "static"
 
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # easy_thumbnails
-THUMBNAIL_DEBUG = True  # TODO: change
+THUMBNAIL_DEBUG = False #TODO: change в режиме debug
 THUMBNAIL_ALIASES = {
     "": {
         "default": {
@@ -133,7 +133,6 @@ THUMBNAIL_BASEDIR = "thumbnails"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# email settings TODO: необходимо уточнить e-mail.
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # provider settings

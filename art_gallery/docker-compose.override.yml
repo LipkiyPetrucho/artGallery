@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - DJANGO_ENV=development
+      - DJANGO_ENV=local
     ports:
       - "8000:8000"
     depends_on:

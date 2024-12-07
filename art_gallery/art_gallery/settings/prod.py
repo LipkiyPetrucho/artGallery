@@ -4,6 +4,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
+
 # Настройки безопасности
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
@@ -14,7 +15,8 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
 
 # Добавление WhiteNoise для обслуживания статических файлов
 MIDDLEWARE = [
