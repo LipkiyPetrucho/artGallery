@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+<section class="blog-list">
+    <h1>Блог</h1>
+    <div class="posts">
+        {% for post in page_obj %}
+            <div class="post-item">
+                <a href="{{ post.get_absolute_url }}">
+                    {% if post.image %}
+                        {% thumbnail post.image "blog_thumbnail" as im %}
+                            <img src="{{ im.url }}" alt="{{ post.title }}" class="post-image" loading="lazy">
+                    {% endif %}
+                    <h2>{{ post.title }}</h2>
+                    <p class="post-meta">Опубликовано {{ post.created|date:"d M Y" }} автором {{ post.author }}</p>
+                    <p>{{ post.content|truncatewords:30 }}</p>
+                </a>
+            </div>
+        {% empty %}
+            <p>В блоге пока нет постов.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Включение шаблона пагинации -->
+    {% include 'pagination/pagination.html' %}
+</section>
+{% endblock %}

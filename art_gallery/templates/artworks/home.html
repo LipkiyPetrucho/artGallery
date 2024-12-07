@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<section class="home">
+    <div class="featured-image">
+        <img src="{% static 'img/cats.png' %}" alt="Изображение картин">
+    </div>
+</section>
+{% endblock %}

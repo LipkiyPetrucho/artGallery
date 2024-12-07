@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}Свободные работы{% endblock %}
+
+{% block content %}
+<section class="free-works">
+    <header class="hero">
+        <h1>свободные работы</h1>
+    </header>
+
+    <div class="works-grid">
+        {% for painting in paintings %}
+        <div class="work-card">
+            <a href="{% url 'artworks:detail' painting.id %}">
+                {% thumbnail painting.image "gallery" as im %}
+                    <img src="{{ im.url }}" alt="{{ painting.title }}" class="work-image">
+
+            </a>
+            <div class="work-info">
+                <p>{{ painting.title }}, {{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+                <p>Статус: {{ painting.get_status_display }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
