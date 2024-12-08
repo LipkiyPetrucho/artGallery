@@ -61,7 +61,10 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 *.cache.sqlite
-art_gallery/media/
+art_gallery/media/blog/
+art_gallery/media/images/
+art_gallery/media/paintings/
+art_gallery/media/thumbnails/
 static/admin/
 static/grappelli/
 structure.txt
