@@ -61,9 +61,10 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 *.cache.sqlite
-media/
+art_gallery/media/
 static/admin/
 static/grappelli/
+structure.txt
 
 # PostgreSQL stuff:
 *.pg_dump
