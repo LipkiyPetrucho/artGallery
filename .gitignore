@@ -65,6 +65,7 @@ art_gallery/media/blog/
 art_gallery/media/images/
 art_gallery/media/paintings/
 art_gallery/media/thumbnails/
+art_gallery/media/videos/
 static/admin/
 static/grappelli/
 structure.txt
