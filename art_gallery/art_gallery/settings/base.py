@@ -88,8 +88,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Международные настройки
 LANGUAGE_CODE = "ru-ru"
-TIME_ZONE = "UTC"
+
+TIME_ZONE = "Europe/Moscow"
+
 USE_I18N = True
+
 USE_TZ = True
 
 STATIC_URL = "/static/"
@@ -177,4 +180,4 @@ LOGGING = {
     },
 }
 # TODO: убрать
-CSRF_TRUSTED_ORIGINS = [os.getenv("CSRF_TRUSTED_ORIGINS")]
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
