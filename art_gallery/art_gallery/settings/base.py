@@ -179,6 +179,11 @@ LOGGING = {
             "level": "DEBUG",
             "propagate": True,
         },
+        "django.security.csrf": {
+            "handlers": ["file"],
+            "level": "WARNING",
+            "propagate": False,
+            },
         "artworks": {
             "handlers": ["file"],
             "level": "DEBUG",
