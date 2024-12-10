@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru', 'web']
 
 
 # Настройки безопасности
