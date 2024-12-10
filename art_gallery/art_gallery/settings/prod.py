@@ -38,5 +38,5 @@ MIDDLEWARE = [
 
 # Настройки логирования для продакшн
 LOGGING["handlers"]["file"]["level"] = "INFO"
-LOGGING["loggers"]["django"]["level"] = "DEBUG"
+LOGGING["loggers"]["django"]["level"] = "INFO"
 LOGGING["loggers"]["artworks"]["level"] = "INFO"
