@@ -7,6 +7,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "www.art-lipatova.ru",
     "art-lipatova.ru",
+    "https://www.art-lipatova.ru",
     "http://www.art-lipatova.ru",
 ]
 
