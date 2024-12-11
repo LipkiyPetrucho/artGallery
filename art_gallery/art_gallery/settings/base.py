@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     # libs
     "easy_thumbnails",
-    "corsheaders",
 ]
 
 MIDDLEWARE = [

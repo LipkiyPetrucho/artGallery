@@ -16,25 +16,10 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_SSL_REDIRECT = False
 
-USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-CORS_ALLOW_CREDENTIALS = True
-
-# CORS настройки
-CORS_ALLOWED_ORIGINS = [
-    "https://art-lipatova.ru",
-    "https://www.art-lipatova.ru",
-]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-
-
-# Добавление WhiteNoise для обслуживания статических файлов
-MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-] + MIDDLEWARE
 
 # Настройки логирования для продакшн
 LOGGING["handlers"]["file"]["level"] = "INFO"
