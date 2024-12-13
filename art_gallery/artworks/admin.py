@@ -23,3 +23,5 @@ class PaintingAdmin(admin.ModelAdmin):
     )
     list_editable = ("status",)
     ordering = ("-upload_date",)
+
+    show_facets = admin.ShowFacets.ALLOW
