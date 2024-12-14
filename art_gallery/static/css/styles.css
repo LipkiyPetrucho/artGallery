@@ -40,6 +40,7 @@ header.hero p {
     font-size: 18px;
     color: #666;
     margin-top: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav.main-menu {
@@ -48,6 +49,7 @@ nav.main-menu {
     background-color: #ffffff;
     padding: 10px 0;
     text-transform: uppercase;
+    margin-top: 40px; /* Добавляем отступ сверху */
     /*border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;*/
 }
@@ -65,7 +67,7 @@ nav.main-menu li {
 
 nav.main-menu a {
     text-decoration: none;
-    color: #333;
+    color: #666;
     font-size: 16px;
     transition: color 0.3s;
 }
@@ -121,13 +123,13 @@ footer ul.social-links li {
 
 footer ul.social-links a {
     text-decoration: none;
-    color: #333;
+    color: #666;
     font-size: 60px; /* Размер иконок */
     transition: color 0.3s;
 }
 
 footer ul.social-links a:hover {
-    color: #007bff;
+    color: #af6877;
 }
 
 @media (max-width: 768px) {
@@ -349,7 +351,7 @@ footer ul.social-links a:hover {
     margin: 0 30px;
     display: inline-block;
     font-size: 60px; /* Размер иконок */
-    color: #333;
+    color: #666;
     transition: color 0.3s;
 }
 
@@ -367,19 +369,19 @@ footer ul.social-links a:hover {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
 }
 
 .email-button:hover {
-    background-color: #d3d3d3;
+    /*background-color: #d3d3d3;*/
     border: 2px solid #3d5063; /* серая рамка */
     color: #000000;
 }
@@ -393,7 +395,8 @@ footer ul.social-links a:hover {
 }
 
 .contact-form p {
-    margin: 20px 0;
+    margin: 40px 0;
+    margin-bottom: 40px;
     font-size: 18px;
     color: #666;
 }
@@ -416,20 +419,20 @@ footer ul.social-links a:hover {
 .contact-form button {
     width: 100%; /* Доступная ширина кнопки будет равной ширине формы */
     padding: 10px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
 }
 
 .contact-form button:hover {
-    background-color: #d3d3d3;
-    border: 2px solid #3d5063; /* серая рамка */
+    /* background-color: #d3d3d3; */
+    border: 2px solid #3d5063;
     color: #000000;
 }
 
@@ -505,8 +508,8 @@ footer ul.social-links a:hover {
 
 .carousel-images {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Пять колонок */
-    grid-template-rows: repeat(2, 1fr); /* Два ряда */
+    grid-template-columns: repeat(5, 1fr); /* n колонок */
+    grid-template-rows: repeat(3, 1fr); /* n ряда */
     gap: 15px; /* Расстояние между элементами */
     max-width: 1000px; /* Максимальная ширина галереи */
     margin: 0 auto; /* Центрирование галереи */
@@ -579,21 +582,23 @@ footer ul.social-links a:hover {
 .cta-button {
     text-decoration: none; /* Убирает подчеркивание */
     padding: 10px 20px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* добавляем плавный переход для transform */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
+    transition: transform 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #d3d3d3;
-    border: 2px solid #3d5063; /* серая рамка */
+    /*background-color: #d3d3d3;*/
+    border: 2px solid #000000; /* серая рамка */
     color: #000000;
+    transform: scale(1.2); /* Увеличение на 5% */
 }
 
 /* Стили для модального окна */
@@ -792,7 +797,7 @@ footer ul.social-links a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
     padding: 10px;
-    text-align: center;
+    text-align: left;
     transition: transform 0.3s;
 }
 
