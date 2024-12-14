@@ -824,10 +824,12 @@ footer ul.social-links a:hover {
 }
 
 .painting-container {
-    display: flex;
-    flex-direction: column; /* Располагаем элементы вертикально */
-    align-items: center;    /* Центрируем элементы по горизонтали */
-    margin-top: 30px;
+    display: flex; /* Располагаем элементы в строку */
+    flex-direction: row; /* Горизонтальная ориентация */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    /*justify-content: center;  Центрируем по горизонтали */
+    gap: 20px; /* Отступ между основной картиной и миниатюрами */
+    margin-top: 20px; /* Отступ от верха сектора */
 }
 
 .painting-main {
@@ -843,9 +845,17 @@ footer ul.social-links a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.thumbnails-and-description {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение миниатюр и описания */
+    gap: 20px; /* Отступ между миниатюрами и описанием */
+    flex: 0 0 250px; /* Фиксированная ширина для контейнера */
+    height: 100%;
+}
+
 .painting-thumbnails {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Вертикальное расположение миниатюр */
     gap: 15px; /* Увеличен отступ между миниатюрами */
     margin-left: 30px; /* Увеличен отступ между основной картиной и миниатюрами */
     flex: 0 0 150px; /* Фиксированная ширина для миниатюр */
@@ -866,9 +876,11 @@ footer ul.social-links a:hover {
 }
 
 .painting-description {
-    margin-top: 30px;      /* Отступ сверху для описания */
-    text-align: center;    /* Центрируем текст описания (можно изменить на left) */
-    padding: 0 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
+    margin-top: auto; /* Смещаем вниз */
+
+    padding: 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
+    text-align: left;    /* Центрируем текст описания */
+
 }
 
 .painting-description h2 {
@@ -890,6 +902,14 @@ footer ul.social-links a:hover {
         align-items: center;
     }
 
+    .painting-description {
+        padding: 0 10px;
+        align-self: center; /* Центрируем текст */
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%; /* Растягиваем на всю ширину */
+    }
+
     .painting-main {
         flex: 0 0 100%;
         max-width: 100%;
@@ -899,8 +919,9 @@ footer ul.social-links a:hover {
         flex: 0 0 100%;
         margin-left: 0;
         margin-top: 20px;
-        flex-direction: row;
+
         justify-content: center;
+        gap: 10px;
     }
 
     .painting-thumbnails a {
@@ -913,11 +934,6 @@ footer ul.social-links a:hover {
     }
 }
 
-@media (max-width: 768px) {
-    .painting-description {
-        padding: 0 10px;
-    }
-}
 
 @media (max-width: 480px) {
     .painting-description {

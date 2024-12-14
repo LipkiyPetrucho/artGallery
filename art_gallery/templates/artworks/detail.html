@@ -17,23 +17,26 @@
                     <img src="{{ im.url }}" alt="{{ painting.title }}">
                 </a>
         </div>
-    </div>
-<!--        &lt;!&ndash; Миниатюры других картин &ndash;&gt;-->
-<!--        <div class="painting-thumbnails">-->
-<!--            {% for other in other_paintings %}-->
-<!--                    <a href="{{ other.get_absolute_url }}">-->
-<!--                        {% thumbnail other.image "gallery" as im %}-->
-<!--                            <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">-->
-<!--                    </a>-->
-<!--            {% endfor %}-->
-<!--        </div>-->
-<!--    </div>-->
 
-    <!-- Описание картины -->
-    <div class="painting-description">
-        <h2>{{ painting.title }}</h2>
-        <p>{{ painting.description }}</p>
-        <p>{{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+        <!-- Миниатюры и описание -->
+        <div class="thumbnails-and-description">
+            <!-- Миниатюры других картин -->
+            <div class="painting-thumbnails">
+                {% for other in other_paintings %}
+                        <a href="{{ other.get_absolute_url }}">
+                            {% thumbnail other.image "gallery" as im %}
+                                <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">
+                        </a>
+                {% endfor %}
+            </div>
+
+            <!-- Описание картины -->
+            <div class="painting-description">
+                <h2>{{ painting.title }}</h2>
+                <p>{{ painting.description }}</p>
+                <p>{{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
