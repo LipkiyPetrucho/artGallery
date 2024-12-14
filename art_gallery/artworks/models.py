@@ -10,7 +10,7 @@ class Painting(models.Model):
 
     # TODO: author = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField("Название", max_length=200)
-    created_at = models.DateField("Дата создания")
+    created_at = models.DateField("Дата создания", blank=True, null=True)
     upload_date = models.DateTimeField("Дата загрузки", auto_now_add=True)
     material = models.CharField("Материал", max_length=100)
     dimensions = models.CharField("Размеры", max_length=50)
