@@ -544,6 +544,7 @@ footer ul.social-links a:hover {
 }
 
 .step-links a.pagination-button {
+    text-decoration: none;
     margin: 0 10px;
     padding: 10px 20px;
     background: #333;
@@ -562,6 +563,7 @@ footer ul.social-links a:hover {
 }
 
 .pagination-button {
+    text-decoration: none;
     margin: 0 10px;
     padding: 10px 20px;
     background: #333;
@@ -1091,17 +1093,8 @@ footer ul.social-links a:hover {
     margin-top: 20px;
 }
 
-.step-links a.pagination-button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.step-links a.pagination-button:hover {
-    background: #555;
+.pagination .step-links a {
+    text-decoration: none; /* Убирает подчеркивание у всех ссылок внутри элемента пагинации */
 }
 
 .step-links .current {

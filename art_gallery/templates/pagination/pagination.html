@@ -5,7 +5,7 @@
         {% endif %}
 
         <span class="current">
-            Страница {{ page_obj.number }} из {{ paginator.num_pages }}.
+            {{ page_obj.number }} из {{ paginator.num_pages }}.
         </span>
 
         {% if page_obj.has_next %}
