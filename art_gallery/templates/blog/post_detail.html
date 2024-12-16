@@ -18,8 +18,8 @@
         {% endif %}
 
         {% if post.video %}
-            <div class="post-video">
-                <video controls>
+            <div class="responsive-video">
+                <video controls loading="lazy">
                     <source src="{{ post.video.url }}" type="video/mp4">
                     Ваш браузер не поддерживает видео.
                 </video>

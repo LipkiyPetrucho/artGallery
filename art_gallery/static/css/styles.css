@@ -40,6 +40,7 @@ header.hero p {
     font-size: 18px;
     color: #666;
     margin-top: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav.main-menu {
@@ -48,6 +49,7 @@ nav.main-menu {
     background-color: #ffffff;
     padding: 10px 0;
     text-transform: uppercase;
+    margin-top: 40px; /* Добавляем отступ сверху */
     /*border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;*/
 }
@@ -65,7 +67,7 @@ nav.main-menu li {
 
 nav.main-menu a {
     text-decoration: none;
-    color: #333;
+    color: #666;
     font-size: 16px;
     transition: color 0.3s;
 }
@@ -121,13 +123,13 @@ footer ul.social-links li {
 
 footer ul.social-links a {
     text-decoration: none;
-    color: #333;
+    color: #666;
     font-size: 60px; /* Размер иконок */
     transition: color 0.3s;
 }
 
 footer ul.social-links a:hover {
-    color: #007bff;
+    color: #af6877;
 }
 
 @media (max-width: 768px) {
@@ -278,6 +280,34 @@ footer ul.social-links a:hover {
     color: #333;
 }
 
+.responsive-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 соотношение сторон */
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 800px; /* Максимальная ширина */
+    margin: 0 auto; /* Центрирование */
+}
+
+.responsive-video video,
+.responsive-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.responsive-video video:hover {
+    transform: scale(1.02);
+}
+
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .about-author {
@@ -321,7 +351,7 @@ footer ul.social-links a:hover {
     margin: 0 30px;
     display: inline-block;
     font-size: 60px; /* Размер иконок */
-    color: #333;
+    color: #666;
     transition: color 0.3s;
 }
 
@@ -339,19 +369,19 @@ footer ul.social-links a:hover {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
 }
 
 .email-button:hover {
-    background-color: #d3d3d3;
+    /*background-color: #d3d3d3;*/
     border: 2px solid #3d5063; /* серая рамка */
     color: #000000;
 }
@@ -365,7 +395,8 @@ footer ul.social-links a:hover {
 }
 
 .contact-form p {
-    margin: 20px 0;
+    margin: 40px 0;
+    margin-bottom: 40px;
     font-size: 18px;
     color: #666;
 }
@@ -388,20 +419,20 @@ footer ul.social-links a:hover {
 .contact-form button {
     width: 100%; /* Доступная ширина кнопки будет равной ширине формы */
     padding: 10px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
 }
 
 .contact-form button:hover {
-    background-color: #d3d3d3;
-    border: 2px solid #3d5063; /* серая рамка */
+    /* background-color: #d3d3d3; */
+    border: 2px solid #3d5063;
     color: #000000;
 }
 
@@ -477,8 +508,8 @@ footer ul.social-links a:hover {
 
 .carousel-images {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Пять колонок */
-    grid-template-rows: repeat(2, 1fr); /* Два ряда */
+    grid-template-columns: repeat(5, 1fr); /* n колонок */
+    grid-template-rows: repeat(3, 1fr); /* n ряда */
     gap: 15px; /* Расстояние между элементами */
     max-width: 1000px; /* Максимальная ширина галереи */
     margin: 0 auto; /* Центрирование галереи */
@@ -513,6 +544,7 @@ footer ul.social-links a:hover {
 }
 
 .step-links a.pagination-button {
+    text-decoration: none;
     margin: 0 10px;
     padding: 10px 20px;
     background: #333;
@@ -531,6 +563,7 @@ footer ul.social-links a:hover {
 }
 
 .pagination-button {
+    text-decoration: none;
     margin: 0 10px;
     padding: 10px 20px;
     background: #333;
@@ -546,26 +579,28 @@ footer ul.social-links a:hover {
 .cta {
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .cta-button {
     text-decoration: none; /* Убирает подчеркивание */
     padding: 10px 20px;
-    background-color: #3d5063;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #666;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s, color 0.3s; /* добавляем плавный переход */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* добавляем плавный переход для transform */
     box-sizing: border-box;
-    border: 2px solid #3d5063; /* серая рамка */
+    border: 2px solid #666; /* серая рамка */
 }
 
 .cta-button:hover {
-    background-color: #d3d3d3;
-    border: 2px solid #3d5063; /* серая рамка */
+    /*background-color: #d3d3d3;*/
+    border: 2px solid #000000; /* серая рамка */
     color: #000000;
+    transform: scale(1.2); /* Увеличение на 5% */
 }
 
 /* Стили для модального окна */
@@ -764,7 +799,7 @@ footer ul.social-links a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
     padding: 10px;
-    text-align: center;
+    text-align: left;
     transition: transform 0.3s;
 }
 
@@ -795,11 +830,17 @@ footer ul.social-links a:hover {
     text-align: left; /* Изменено на left для лучшего выравнивания текста */
 }
 
+.painting-detail-link a{
+    text-decoration: none;
+}
+
 .painting-container {
-    display: flex;
-    flex-direction: column; /* Располагаем элементы вертикально */
-    align-items: center;    /* Центрируем элементы по горизонтали */
-    margin-top: 30px;
+    display: flex; /* Располагаем элементы в строку */
+    flex-direction: row; /* Горизонтальная ориентация */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    /*justify-content: center;  Центрируем по горизонтали */
+    gap: 20px; /* Отступ между основной картиной и миниатюрами */
+    margin-top: 20px; /* Отступ от верха сектора */
 }
 
 .painting-main {
@@ -815,9 +856,17 @@ footer ul.social-links a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.thumbnails-and-description {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение миниатюр и описания */
+    gap: 20px; /* Отступ между миниатюрами и описанием */
+    flex: 0 0 250px; /* Фиксированная ширина для контейнера */
+    height: 100%;
+}
+
 .painting-thumbnails {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Вертикальное расположение миниатюр */
     gap: 15px; /* Увеличен отступ между миниатюрами */
     margin-left: 30px; /* Увеличен отступ между основной картиной и миниатюрами */
     flex: 0 0 150px; /* Фиксированная ширина для миниатюр */
@@ -838,9 +887,11 @@ footer ul.social-links a:hover {
 }
 
 .painting-description {
-    margin-top: 30px;      /* Отступ сверху для описания */
-    text-align: center;    /* Центрируем текст описания (можно изменить на left) */
-    padding: 0 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
+    margin-top: auto; /* Смещаем вниз */
+
+    padding: 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
+    text-align: left;    /* Центрируем текст описания */
+
 }
 
 .painting-description h2 {
@@ -862,6 +913,14 @@ footer ul.social-links a:hover {
         align-items: center;
     }
 
+    .painting-description {
+        padding: 0 10px;
+        align-self: center; /* Центрируем текст */
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%; /* Растягиваем на всю ширину */
+    }
+
     .painting-main {
         flex: 0 0 100%;
         max-width: 100%;
@@ -871,8 +930,9 @@ footer ul.social-links a:hover {
         flex: 0 0 100%;
         margin-left: 0;
         margin-top: 20px;
-        flex-direction: row;
+
         justify-content: center;
+        gap: 10px;
     }
 
     .painting-thumbnails a {
@@ -885,11 +945,6 @@ footer ul.social-links a:hover {
     }
 }
 
-@media (max-width: 768px) {
-    .painting-description {
-        padding: 0 10px;
-    }
-}
 
 @media (max-width: 480px) {
     .painting-description {
@@ -977,6 +1032,17 @@ footer ul.social-links a:hover {
 
 .post-detail .post-video {
     margin-bottom: 20px;
+    /* Добавим обёртку для видео */
+    position: relative;
+    padding-bottom: 20%; /* 4:3 */
+    padding-top: 25px;
+    height: 0;
+    max-width: 800px; /* Максимальная ширина видео */
+    margin: 0 auto; /* Центрирование */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    max-height: 500px;
+    object-fit: cover;
 }
 
 .post-detail .post-video video {
@@ -1027,17 +1093,8 @@ footer ul.social-links a:hover {
     margin-top: 20px;
 }
 
-.step-links a.pagination-button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.step-links a.pagination-button:hover {
-    background: #555;
+.pagination .step-links a {
+    text-decoration: none; /* Убирает подчеркивание у всех ссылок внутри элемента пагинации */
 }
 
 .step-links .current {

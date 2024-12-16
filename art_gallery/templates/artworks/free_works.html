@@ -7,7 +7,7 @@
 {% block content %}
 <section class="free-works">
     <header class="hero">
-        <h1>свободные работы</h1>
+        <p>СВОБОДНЫЕ РАБОТЫ</p>
     </header>
 
     <div class="works-grid">
@@ -19,8 +19,10 @@
 
             </a>
             <div class="work-info">
-                <p>{{ painting.title }}, {{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
-                <p>Статус: {{ painting.get_status_display }}</p>
+                <p>{{ painting.id }}, {{ painting.title }}</p>
+                <p>{{ painting.material }}, {{ painting.dimensions }}</p>
+                <p>{{ painting.get_creation_year }}</p>
+<!--                <p>Статус: {{ painting.get_status_display }}</p>-->
             </div>
         </div>
         {% endfor %}

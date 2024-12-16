@@ -61,6 +61,14 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 *.cache.sqlite
+art_gallery/media/blog/
+art_gallery/media/images/
+art_gallery/media/paintings/
+art_gallery/media/thumbnails/
+art_gallery/media/videos/
+static/admin/
+static/grappelli/
+structure.txt
 
 # PostgreSQL stuff:
 *.pg_dump
@@ -135,7 +143,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-art_gallery/.env
+.env
 
 # Spyder project settings
 .spyderproject
@@ -168,7 +176,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 .idea
+ssl
+.ssl
+.ssl/
 
-art_gallery/media/
-media/
-ssl/

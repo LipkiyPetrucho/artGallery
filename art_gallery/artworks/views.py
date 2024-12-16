@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
+from art_gallery.settings import base
 from .models import Painting
 from .forms import ContactForm
 
@@ -23,7 +24,7 @@ def about_view(request):
 
 def gallery_view(request):
     paintings = Painting.objects.all().order_by("id")
-    paginator = Paginator(paintings, 10)
+    paginator = Paginator(paintings, 15)
     page_number = request.GET.get("page", 1)
 
     logger.debug(f"Received page number: {page_number}")
@@ -35,10 +36,6 @@ def gallery_view(request):
     return render(
         request, "artworks/gallery.html", {"page_obj": page_obj, "paginator": paginator}
     )
-
-
-def blog_view(request):
-    return HttpResponse("Страница 'Блог' в разработке.")
 
 
 def contacts_view(request):
@@ -56,8 +53,8 @@ def contacts_view(request):
             email = EmailMessage(
                 subject=subject,
                 body=body,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[settings.ARTIST_EMAIL],
+                from_email=base.DEFAULT_FROM_EMAIL,
+                to=[base.ARTIST_EMAIL],
                 reply_to=[from_email],
             )
 
