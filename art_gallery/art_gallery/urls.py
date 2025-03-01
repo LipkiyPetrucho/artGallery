@@ -1,9 +1,17 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 
 from artworks.views import home_view
+from sitemap import StaticViewSitemap, PaintingSitemap, PostSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'paintings': PaintingSitemap,
+    'posts': PostSitemap,
+}
 
 urlpatterns = [
     path("grappelli/", include("grappelli.urls")),
@@ -11,6 +19,7 @@ urlpatterns = [
     path("", home_view, name="home"),
     path("artworks/", include("artworks.urls")),
     path("blog/", include("blog.urls")),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

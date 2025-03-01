@@ -4,10 +4,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.core.paginator import Paginator
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from art_gallery.settings import base
+# from art_gallery.settings import settings
 from .models import Painting
 from .forms import ContactForm
 
@@ -50,11 +49,18 @@ def contacts_view(request):
             subject = f"Новое сообщение от {name}"
             body = f"Имя: {name}\nEmail: {from_email}\n\nСообщение:\n{message}"
 
+            # Диагностические принты перед созданием EmailMessage
+            print(f"Subject: {subject}")
+            print(f"Body: {body}")
+            print(f"From Email: {settings.DEFAULT_FROM_EMAIL}")
+            print(f"To: {settings.ARTIST_EMAIL}")
+            print(f"Reply To: {from_email}")
+
             email = EmailMessage(
                 subject=subject,
                 body=body,
-                from_email=base.DEFAULT_FROM_EMAIL,
-                to=[base.ARTIST_EMAIL],
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.ARTIST_EMAIL],
                 reply_to=[from_email],
             )
 
@@ -64,14 +70,23 @@ def contacts_view(request):
                 )
 
             try:
+                # Попытка отправки email
+                print("Пытаемся отправить письмо...")
                 email.send()
+                print("Письмо успешно отправлено!")
                 messages.success(request, "Ваше сообщение успешно отправлено!")
                 return redirect("artworks:contacts")
             except Exception as e:
+                # Диагностика ошибок отправки
+                print("Ошибка при отправке письма!")
+                print(f"Исключение: {e}")
                 messages.error(
                     request,
                     "Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте позже.",
                 )
+        else:
+            print("Форма недействительна!")
+            print(f"Ошибки формы: {form.errors}")
     else:
         form = ContactForm()
 
