@@ -8,7 +8,6 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
-ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -20,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.postgres",
+    "django.contrib.sitemaps",
     # apps
     "artworks.apps.ArtworksConfig",
     "blog.apps.BlogConfig",

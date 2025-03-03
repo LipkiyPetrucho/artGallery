@@ -1,8 +1,8 @@
-from .base import *
+from .settings import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru', 'web']
+ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru']
 
 
 # Настройки безопасности

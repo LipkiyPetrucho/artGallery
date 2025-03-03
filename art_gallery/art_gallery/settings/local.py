@@ -1,14 +1,8 @@
-from .base import *
+from .settings import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-# STATICFILES_DIRS = [BASE_DIR / "static"]
+ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru']
 
 # Настройки логирования для разработки
 LOGGING["handlers"]["file"]["level"] = "DEBUG"
