@@ -7,17 +7,22 @@ from blog.models import Post
 
 class StaticViewSitemap(Sitemap):
     priority = 0.5
-    changefreq = 'weekly'
+    changefreq = "weekly"
 
     def items(self):
-        return ['artworks:about', 'artworks:contacts', 'artworks:free_works', 'artworks:gallery']
+        return [
+            "artworks:about",
+            "artworks:contacts",
+            "artworks:free_works",
+            "artworks:gallery",
+        ]
 
     def location(self, item):
         return reverse(item)
 
 
 class PaintingSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = "weekly"
     priority = 0.8
 
     def items(self):
@@ -29,7 +34,7 @@ class PaintingSitemap(Sitemap):
 
 
 class PostSitemap(Sitemap):
-    changefreq = 'weekly'
+    changefreq = "weekly"
     priority = 0.9
 
     def items(self):

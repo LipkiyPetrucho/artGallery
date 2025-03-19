@@ -2,7 +2,7 @@ from .settings import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru']
+ALLOWED_HOSTS = ["art-lipatova.ru", "www.art-lipatova.ru"]
 
 # Настройки логирования для разработки
 LOGGING["handlers"]["file"]["level"] = "DEBUG"

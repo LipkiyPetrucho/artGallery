@@ -2,7 +2,7 @@ from .settings import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['art-lipatova.ru', 'www.art-lipatova.ru']
+ALLOWED_HOSTS = ["art-lipatova.ru", "www.art-lipatova.ru"]
 
 
 # Настройки безопасности
@@ -16,7 +16,7 @@ SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_SSL_REDIRECT = False
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"

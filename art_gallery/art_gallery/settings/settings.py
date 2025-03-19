@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.postgres",
+    "django.contrib.sites",
     "django.contrib.sitemaps",
     # apps
     "artworks.apps.ArtworksConfig",
@@ -163,13 +164,13 @@ LOGGING = {
             "level": "DEBUG",
             "class": "logging.FileHandler",
             "filename": os.path.join(BASE_DIR, "debug.log"),
-            'formatter': 'verbose',
+            "formatter": "verbose",
         },
     },
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
         },
     },
     "loggers": {
@@ -182,7 +183,7 @@ LOGGING = {
             "handlers": ["file"],
             "level": "WARNING",
             "propagate": False,
-            },
+        },
         "artworks": {
             "handlers": ["file"],
             "level": "DEBUG",
