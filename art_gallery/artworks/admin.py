@@ -17,6 +17,7 @@ class PaintingAdmin(SortableAdminMixin, admin.ModelAdmin):
         "status",
         "order",
     ]
+
     list_filter = ["upload_date", "status"]
     search_fields = (
         "title",
@@ -25,4 +26,4 @@ class PaintingAdmin(SortableAdminMixin, admin.ModelAdmin):
         "category",
     )
     list_editable = ("status",)
-    ordering = ("-upload_date",)
+    ordering = ("order",)
