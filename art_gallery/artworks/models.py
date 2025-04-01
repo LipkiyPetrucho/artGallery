@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from adminsortable2.admin import SortableAdminMixin
 
 
 class Painting(models.Model):
@@ -27,10 +28,12 @@ class Painting(models.Model):
         default=Status.AVAILABLE,
         verbose_name="Статус",
     )
+    order = models.PositiveIntegerField("Порядок", default=0, blank=False, null=False)
 
     class Meta:
         verbose_name = "Картина"
         verbose_name_plural = "Картины"
+        ordering = ["order"]
 
     def __str__(self):
         return self.title

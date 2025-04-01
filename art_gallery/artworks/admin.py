@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 
 from .admin_forms import PaintingAdminForm
@@ -5,7 +6,7 @@ from .models import Painting
 
 
 @admin.register(Painting)
-class PaintingAdmin(admin.ModelAdmin):
+class PaintingAdmin(SortableAdminMixin, admin.ModelAdmin):
     form = PaintingAdminForm
     list_display = [
         "title",
@@ -14,6 +15,7 @@ class PaintingAdmin(admin.ModelAdmin):
         "image",
         "description",
         "status",
+        "order",
     ]
     list_filter = ["upload_date", "status"]
     search_fields = (

@@ -22,7 +22,7 @@ def about_view(request):
 
 
 def gallery_view(request):
-    paintings = Painting.objects.all().order_by("id")
+    paintings = Painting.objects.all()
     paginator = Paginator(paintings, 15)
     page_number = request.GET.get("page", 1)
 
