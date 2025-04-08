@@ -11,7 +11,7 @@ DEBUG = False
 
 
 INSTALLED_APPS = [
-    "adminsortable2",
+    "adminsortable2.apps.AdminSortable2Config",
     "grappelli",
     "django.contrib.admin",
     "django.contrib.auth",
