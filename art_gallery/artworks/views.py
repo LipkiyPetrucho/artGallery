@@ -6,7 +6,7 @@ from django.core.mail import EmailMessage
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 
-# from art_gallery.settings import settings
+from show.models import Exhibition, VideoItem
 from .models import Painting
 from .forms import ContactForm
 
@@ -18,7 +18,10 @@ def home_view(request):
 
 
 def about_view(request):
-    return render(request, "artworks/about.html")
+    return render(request, "artworks/about.html",{
+        'exhibitions': Exhibition.objects.all(),
+        'videos':       VideoItem.objects.all(),
+    })
 
 
 def gallery_view(request):

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     # apps
     "artworks.apps.ArtworksConfig",
     "blog.apps.BlogConfig",
+    "show.apps.ShowConfig",
     # libs
     "easy_thumbnails",
     "adminsortable2",
