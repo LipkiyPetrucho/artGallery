@@ -22,11 +22,13 @@
         <div class="thumbnails-and-description">
             <!-- Миниатюры других картин -->
             <div class="painting-thumbnails">
-                {% for other in other_paintings %}
-                        <a href="{{ other.get_absolute_url }}">
-                            {% thumbnail other.image "gallery" as im %}
-                                <img src="{{ other.image.url }}" alt="{{ other.title }}" class="thumbnail">
+                {% for extra in painting.extra_images.all %}
+                        <a href="{{ extra.image.url }}">
+                            {% thumbnail extra.image "gallery" as im %}
+                                <img src="{{ im.url }}" alt="{{ painting.title }} ракурс {{ forloop.counter }}" class="thumbnail">
                         </a>
+                {% empty %}
+                    <p>Нет дополнительных фото.</p>
                 {% endfor %}
             </div>
 

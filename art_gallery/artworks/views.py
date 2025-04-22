@@ -19,13 +19,13 @@ def home_view(request):
 
 def about_view(request):
     return render(request, "artworks/about.html",{
-        'exhibitions': Exhibition.objects.all(),
-        'videos':       VideoItem.objects.all(),
+        'exhibitions': Exhibition.objects.all(),  # type: ignore[attr-defined]
+        'videos':       VideoItem.objects.all(),  # type: ignore[attr-defined]
     })
 
 
 def gallery_view(request):
-    paintings = Painting.objects.all()
+    paintings = Painting.objects.all()  # type: ignore[attr-defined]
     paginator = Paginator(paintings, 15)
     page_number = request.GET.get("page", 1)
 
@@ -97,14 +97,16 @@ def contacts_view(request):
 
 
 def free_works(request):
-    paintings = Painting.objects.filter(status=Painting.Status.AVAILABLE)
+    paintings = Painting.objects.filter(status=Painting.Status.AVAILABLE)  # type: ignore[attr-defined]
     return render(request, "artworks/free_works.html", {"paintings": paintings})
 
 
 def painting_detail(request, id):
-    painting = get_object_or_404(Painting, id=id)
+    painting = get_object_or_404(
+        Painting.objects.prefetch_related("extra_images"), id=id
+    )
     # Получаем три случайные другие картины, исключая текущую
-    other_paintings = Painting.objects.exclude(id=painting.id).order_by("?")[:3]
+    other_paintings = Painting.objects.exclude(id=painting.id).order_by("?")[:3]  # type: ignore[attr-defined]
     return render(
         request,
         "artworks/detail.html",
