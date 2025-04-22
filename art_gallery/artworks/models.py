@@ -1,6 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from adminsortable2.admin import SortableAdminMixin
 
 
 class Painting(models.Model):
@@ -16,7 +16,7 @@ class Painting(models.Model):
     material = models.CharField("Материал", max_length=100)
     dimensions = models.CharField("Размеры", max_length=50)
     image = models.ImageField(
-        "Изображение", upload_to="paintings/"
+        "Главное изображение", upload_to="paintings/"
     )  # TODO:   /%Y/%m/%d/
     description = models.TextField("Описание", blank=True)
     category = models.CharField("Категория", max_length=100, blank=True, null=True)
@@ -44,3 +44,27 @@ class Painting(models.Model):
 
     def get_absolute_url(self):
         return reverse("artworks:detail", args=[self.id])
+
+
+class PaintingImage(models.Model):
+    painting = models.ForeignKey(
+        Painting,
+        related_name="extra_images",
+        on_delete=models.CASCADE,
+        verbose_name="Картина",
+    )
+    image = models.ImageField("Дополнительный ракурс", upload_to="paintings/")
+    order = models.PositiveIntegerField("Порядок", default=0)
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Доп. изображение"
+        verbose_name_plural = "Доп. изображения"
+
+    def clean(self):
+        """не даём загрузить > 3 фото для одной картины"""
+        if (
+                self.painting
+                and self.painting.extra_images.exclude(pk=self.pk).count() >= 3
+        ):
+            raise ValidationError("Можно добавить не более трёх дополнительных фото.")

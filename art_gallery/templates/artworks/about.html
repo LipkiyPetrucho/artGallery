@@ -22,51 +22,34 @@
 </section>
 
 <section class="additional-info">
-    <div class="exhibitions">
-        <h2>Список выставок</h2>
-        <ul>
-            <li>Апрель 2025 Выставка "Женский взгляд", Дом Архитектора Самара</li>
-            <li>Март 2025 "Масленица" Ярмарка-выставка, Дом Архитектора Самара</li>
-            <li>Январь 2025 Выставка "Зимняя сказка" студии «Творчество», Самара</li>
-            <li>Август 2024 Выставка "Контрасты" в студии «Творчество», Самара</li>
-            <li>Июль 2024 Выставка "Райский остров, моя мечта" союза художников СООООХ «ТСХ», Самара</li>
-            <li>Июнь 2024 Выставка "Теплая" союза художников СООООХ «ТСХ», Самара</li>
-            <li>Апрель 2023 Выставка "Смешной апрель" союза художников СООООХ «ТСХ», Самара</li>
-        </ul>
+  <div class="exhibitions">
+    <h2>Список выставок</h2>
+    <ul>
+      {% for ex in exhibitions %}
+        <li>
+          {{ ex.date|date:"F Y" }} Выставка "{{ ex.title }}", {{ ex.venue }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 
-    </div>
-    <div class="videos">
-
-        <div class="video-item">
-            <div class="iframe-wrapper">
-                <iframe src="https://www.youtube.com/embed/l7zc-KpKFmw?si=h_12N0dbCw2o-v7p" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <p>Творческий Союз Художников России</p>
+  <div class="videos">
+    {% for vid in videos %}
+      <div class="video-item">
+        <div class="iframe-wrapper">
+          {# если это YouTube/Vimeo, то iframe #}
+          <iframe
+            src="{{ vid.embed_url }}"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
         </div>
-
-        <div class="video-item">
-            <div class="iframe-wrapper">
-                <iframe src="https://www.youtube.com/embed/pA-KSqS9QYU?si=udPlFlWDr8ru_H3D" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <p>выставка Контрасты</p>
-        </div>
-
-        <div class="video-item">
-            <div class="iframe-wrapper">
-                <iframe src="https://m.dzen.ru/embed/vkR82No4ck2s?from_block=partner&from=zen&mute=0&autoplay=0&tv=0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <p>Обзор выставки Райский остров моя мечта</p>
-        </div>
-
-
-<!--        <div class="video-item">-->
-<!--            <video controls loading="lazy">-->
-<!--                <source src="{{ MEDIA_URL }}videos/count_guberniya_contrasts_format_mini.mp4" type="video/mp4">-->
-<!--                Ваш браузер не поддерживает тег video.-->
-<!--            </video>-->
-<!--            <p>выставка Контрасты</p>-->
-<!--        </div>-->
-
-    </div>
+        {% if vid.caption %}
+          <p>{{ vid.caption }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </section>
 {% endblock %}
