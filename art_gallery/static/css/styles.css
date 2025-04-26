@@ -882,6 +882,9 @@ footer ul.social-links a:hover {
     transition: transform 0.3s;
 }
 
+.thumbnail.selected { outline: 2px solid #333; }
+
+
 .thumbnail:hover {
     transform: scale(1.05);
 }
