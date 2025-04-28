@@ -828,6 +828,7 @@ footer ul.social-links a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: left; /* Изменено на left для лучшего выравнивания текста */
+    padding-bottom:40px;   /* можно увеличить/уменьшить при необходимости */
 }
 
 .painting-detail-link a{
@@ -890,7 +891,7 @@ footer ul.social-links a:hover {
 }
 
 .painting-description {
-    margin-top: auto; /* Смещаем вниз */
+
 
     padding: 20px;       /* Добавляем немного внутреннего отступа по бокам для лучшей читаемости */
     text-align: left;    /* Центрируем текст описания */
@@ -910,17 +911,32 @@ footer ul.social-links a:hover {
 }
 
 /* Адаптивные стили для мобильных устройств */
+/* на десктопах (> 992 px, можно подобрать порог) прижимаем к низу боковой колонки */
+@media (min-width:992px){
+    .painting-description{
+        margin-top:auto;
+    }
+}
+
 @media (max-width: 768px) {
     .painting-container {
         flex-direction: column;
         align-items: center;
+    }
+    /* разрешаем колонке растягиваться столько,
+        сколько нужно для текста */
+    .thumbnails-and-description{
+        /* даём контенту занимать сколько нужно */
+        flex: 0 1 auto;   /* или flex:auto; — эквивалентно */
+        height:auto;      /* ваша строчка может остаться */
+        margin:0;         /* заодно убираем лишнее, если было */
     }
 
     .painting-description {
         padding: 0 10px;
         align-self: center; /* Центрируем текст */
         margin-left: 0;
-        margin-top: 20px;
+        margin-top: 20px; /* или 0 – как визуально нравится */
         width: 100%; /* Растягиваем на всю ширину */
     }
 
@@ -952,6 +968,7 @@ footer ul.social-links a:hover {
 @media (max-width: 480px) {
     .painting-description {
         padding: 0 5px;
+        margin-top:20px;     /* или 0 –- как вам визуально удобнее */
     }
 }
 
