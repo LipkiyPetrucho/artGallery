@@ -3,7 +3,8 @@ import logging
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMessage
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from show.models import Exhibition, VideoItem
@@ -25,19 +26,32 @@ def about_view(request):
 
 
 def gallery_view(request):
-    paintings = Painting.objects.all()  # type: ignore[attr-defined]
+    paintings = Painting.objects.all()
     paginator = Paginator(paintings, 15)
-    page_number = request.GET.get("page", 1)
 
-    logger.debug(f"Received page number: {page_number}")
+    page = request.GET.get('page')
+    images_only = request.GET.get('images_only')
 
-    page_obj = paginator.get_page(page_number)
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        if images_only:  # бесконечный скролл достиг конца
+            return HttpResponse('')
+        page_obj = paginator.page(paginator.num_pages)
 
-    logger.debug(f"Current page: {page_obj.number}, Total pages: {paginator.num_pages}")
+    ctx = {'section': 'gallery', 'images': page_obj}
 
-    return render(
-        request, "artworks/gallery.html", {"page_obj": page_obj, "paginator": paginator}
-    )
+    if images_only:  # ajax-вариант
+        return render(request,
+                      'artworks/list_images.html',
+                      ctx)
+
+    # обычный первый заход
+    return render(request,
+                  'artworks/list.html',
+                  ctx)
 
 
 def contacts_view(request):

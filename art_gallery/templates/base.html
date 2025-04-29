@@ -105,5 +105,10 @@
 <!-- Подключение JavaScript -->
     <script src="{% static 'js/lightbox.js' %}"></script>
 {% block extra_js %}{% endblock %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      {% block domready %}{% endblock %}
+  });
+</script>
 </body>
 </html>

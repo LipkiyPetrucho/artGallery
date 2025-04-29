@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Галерея{% endblock %}
+
+{% block content %}
+<section class="gallery">
+  <div id="image-list" class="carousel-images">
+      {% include "artworks/list_images.html" %}
+  </div>
+
+  <div class="cta">
+      <a href="{% url 'artworks:free_works' %}" class="cta-button">
+        смотреть свободные работы
+      </a>
+  </div>
+</section>
+{% endblock %}
+
+{#  JS кладём в domready базового шаблона — как у Меле  #}
+{% block domready %}
+  let page = 1,
+      emptyPage = false,
+      blockRequest = false;
+
+  window.addEventListener('scroll', () => {
+    const margin = document.body.clientHeight - window.innerHeight - 200;
+
+    if (window.pageYOffset > margin && !emptyPage && !blockRequest) {
+      blockRequest = true;
+      page += 1;
+
+      fetch(`?images_only=1&page=${page}`)
+        .then(resp => resp.text())
+        .then(html => {
+          if (html.trim() === '') {
+            emptyPage = true;             // дошли до конца
+          } else {
+            document.getElementById('image-list')
+                    .insertAdjacentHTML('beforeend', html);
+            blockRequest = false;
+          }
+        })
+        .catch(err => { console.error(err); });
+    }
+  });
+
+  // инициируем событие после первой отрисовки
+  window.dispatchEvent(new Event('scroll'));
+{% endblock %}

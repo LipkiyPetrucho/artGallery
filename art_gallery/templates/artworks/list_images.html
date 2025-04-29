@@ -1,0 +1,11 @@
+{% load thumbnail %}
+{% for p in images %}
+  <div class="carousel-item">
+      {% thumbnail p.image 'lightbox' as im_large %}
+      {% thumbnail p.image 'gallery'  as im %}
+      <a href="#" class="gallery-image"
+         data-full="{{ im_large.url }}">
+          <img src="{{ im.url }}" class="carousel-image">
+      </a>
+  </div>
+{% endfor %}
