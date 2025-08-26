@@ -40,6 +40,11 @@
                 <h2>{{ painting.title }}</h2>
                 <p>{{ painting.description }}</p>
                 <p>{{ painting.material }}, {{ painting.dimensions }}, {{ painting.get_creation_year }}</p>
+                <a class="btn-ar"
+                   href="https://petrlipatov.8thwall.app/lipatova-art/?img={{ abs_img_url|urlencode }}"
+                   target="_blank" rel="noopener">
+                  Примерить на стене
+                </a>
             </div>
         </div>
     </div>
@@ -47,6 +52,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/painting-detail.js' %}"></script>
+    <script src="{% static 'js/painting-detail.js' %}"></script>
+    <script src="//cdn.8thwall.com/web/share/embed8.js"></script>
 {% endblock %}
 

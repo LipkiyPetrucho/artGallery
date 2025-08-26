@@ -1,0 +1,17 @@
+<a-scene landing-page xrextras-loading xrextras-runtime-error xrweb>
+
+  <a-camera id="camera" position="0 8 8"></a-camera>
+
+  <!-- «прицел» который двигаем по полу -->
+  <a-box id="placer" wall-from-floor color="#fff" width="5.5" depth="0.25" height="0.1"></a-box>
+
+  <!-- свет и пол -->
+  <a-entity light="type: directional; intensity: 0.6;" position="1 4.3 2.5"></a-entity>
+  <a-light type="ambient" intensity="1"></a-light>
+  <a-entity id="ground"
+            class="cantap"
+            geometry="primitive: box"
+            material="color: #fff; transparent: true; opacity: 0"
+            scale="1000 2 1000"
+            position="0 -1 0"></a-entity>
+</a-scene>
