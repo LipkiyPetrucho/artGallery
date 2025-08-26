@@ -121,8 +121,10 @@ def painting_detail(request, id):
     )
     # Получаем три случайные другие картины, исключая текущую
     other_paintings = Painting.objects.exclude(id=painting.id).order_by("?")[:3]  # type: ignore[attr-defined]
+    host = request.get_host()
+    abs_img_url = f"https://{host}{painting.image.url}"
     return render(
         request,
         "artworks/detail.html",
-        {"painting": painting, "other_paintings": other_paintings},
+        {"painting": painting, "other_paintings": other_paintings, "abs_img_url": abs_img_url},
     )

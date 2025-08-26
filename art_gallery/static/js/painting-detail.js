@@ -11,6 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
+//TODO: Удалите эти две строки или перенесите внутрь обработчика клика, где действительно существует thumbImg
 document.querySelectorAll(".thumbnail").forEach(img => img.classList.remove("selected"));
 thumbImg.classList.add("selected");
