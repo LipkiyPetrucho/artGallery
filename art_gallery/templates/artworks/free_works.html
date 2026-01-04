@@ -25,6 +25,14 @@
 <!--                <p>Статус: {{ painting.get_status_display }}</p>-->
             </div>
         </div>
+        {% empty %}
+        <div class="no-works">
+            <p>В данный момент нет свободных работ.</p>
+            <!-- Debug info (удалить после диагностики) -->
+            {% if debug %}
+            <p style="color: #999; font-size: 12px;">Debug: paintings count = {{ paintings|length }}</p>
+            {% endif %}
+        </div>
         {% endfor %}
     </div>
 </section>

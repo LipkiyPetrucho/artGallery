@@ -111,8 +111,33 @@ def contacts_view(request):
 
 
 def free_works(request):
+    # Диагностика для продакшена
+    total_paintings = Painting.objects.count()
+    all_statuses = list(Painting.objects.values_list('status', flat=True).distinct())
+    status_counts = {status: Painting.objects.filter(status=status).count() for status in all_statuses}
+    
+    logger.info(f"[free_works] Всего картин в БД: {total_paintings}")
+    logger.info(f"[free_works] Все статусы в БД: {all_statuses}")
+    logger.info(f"[free_works] Количество по статусам: {status_counts}")
+    logger.info(f"[free_works] Ищем статус: '{Painting.Status.AVAILABLE}' (value: {Painting.Status.AVAILABLE.value})")
+    
     paintings = Painting.objects.filter(status=Painting.Status.AVAILABLE)  # type: ignore[attr-defined]
-    return render(request, "artworks/free_works.html", {"paintings": paintings})
+    paintings_list = list(paintings)  # Принудительно выполняем запрос
+    
+    logger.info(f"[free_works] Найдено свободных работ: {len(paintings_list)}")
+    
+    # Если есть картины, логируем их ID и статусы
+    if paintings_list:
+        for p in paintings_list[:5]:  # Первые 5 для примера
+            logger.info(f"[free_works] Картина id={p.id}, title='{p.title}', status='{p.status}'")
+    else:
+        # Логируем первые 5 картин из БД для проверки их статусов
+        sample_paintings = Painting.objects.all()[:5]
+        logger.warning(f"[free_works] Нет свободных работ! Пример картин из БД:")
+        for p in sample_paintings:
+            logger.warning(f"[free_works]   id={p.id}, title='{p.title}', status='{p.status}'")
+    
+    return render(request, "artworks/free_works.html", {"paintings": paintings_list})
 
 
 def painting_detail(request, id):
