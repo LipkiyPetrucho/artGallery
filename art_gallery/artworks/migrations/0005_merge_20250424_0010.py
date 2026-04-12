@@ -7,7 +7,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('artworks', '0003_alter_painting_image_paintingimage'),
-        ('artworks', '0004_merge_20250420_2230'),
     ]
 
     operations = [
